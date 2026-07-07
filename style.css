@@ -1,1 +1,235 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
+body{
+
+    background:#e8e8e8;
+
+    width:100vw;
+    height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    overflow:hidden;
+
+    font-family:sans-serif;
+}
+
+#viewer{
+
+    width:100vw;
+    height:100dvh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    position:relative;
+}
+
+#book{
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:0;
+
+    position:relative;
+}
+
+.page{
+
+    aspect-ratio:197 / 290;
+
+    height:92vh;
+    width:auto;
+
+    object-fit:contain;
+
+    display:block;
+
+    cursor:pointer;
+
+    user-select:none;
+
+}
+
+.single{
+
+    height:94vh;
+}
+
+button{
+
+    position:fixed;
+
+    top:50%;
+    transform:translateY(-50%);
+
+    width:36px;
+    height:36px;
+
+    border:none;
+
+    background:none;
+
+    color:#999;
+
+    font-size:28px;
+
+    cursor:pointer;
+
+    z-index:10;
+}
+
+#prev{
+    left:calc(50% - 580px);
+}
+
+#next{
+    left:calc(50% + 545px);
+}
+
+button:hover{
+
+    color:#666;
+
+}
+
+#book.spread::after{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    bottom:0;
+
+    left:50%;
+
+    width:1px;
+
+    background:#d8d8d8;
+
+    transform:translateX(-0.5px);
+
+    pointer-events:none;
+
+}
+
+#fullscreen{
+
+    position:fixed;
+
+    top:20px;
+    right:20px;
+
+    width:36px;
+    height:36px;
+
+    border:none;
+
+    background:none;
+
+    color:#999;
+
+    font-size:24px;
+
+    cursor:pointer;
+
+    z-index:10;
+}
+
+#fullscreen:hover{
+
+    color:#666;
+
+}
+
+#viewer:fullscreen{
+
+    background:#111;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+}
+
+#viewer:fullscreen #prev{
+    left:30px;
+}
+
+#viewer:fullscreen #next{
+    left:auto;
+    right:30px;
+}
+
+.page{
+    touch-action: pinch-zoom;
+}
+
+.mobile-fullscreen{
+
+    position:fixed;
+    top:0;
+    left:0;
+
+    width:100vw;
+    height:100vh;
+
+    background:#111;
+
+    z-index:100;
+
+}
+
+@media (max-width:600px){
+
+    .page,
+    .single{
+
+        height:auto;
+        max-height:80vh;
+        max-width:45vw;
+
+    }
+
+}
+
+.fullscreen{
+
+    position:fixed;
+
+    top:0;
+    left:0;
+
+    width:100vw;
+    height:100vh;
+
+    background:#111;
+
+    z-index:999;
+
+}
+
+@media (max-width:600px){
+
+    .page{
+
+        height:80dvh;
+
+    }
+
+    .single{
+
+        height:80dvh;
+
+    }
+
+}
